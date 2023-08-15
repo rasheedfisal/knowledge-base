@@ -1,0 +1,51 @@
+sequelize model:create --name ProjectOffer --attributes proj_id:number
+
+sequelize model:create --name UserProfile --attributes user_id:integer,  about_user:string, specialization:string
+
+sequelize model:create --name ProjectOffer --attributes proj_id:integer, user_id:integer, price:decimal, days_to_deliver:string, message:string
+
+sequelize migration:create --name update_notification_read_cascade_delete
+
+ type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      allowNull: false,
+      references: {
+        model: "roles",
+        key: "id",
+      },
+
+ type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      allowNull: false,
+      references: {
+        model: "categories",
+        key: "id",
+      },
+
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "mostaqldb",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "u603781915_lazer_name",
+    "password": "Administrator.0",
+    "database": "u603781915_lazer_dbname",
+    "host": "45.84.205.0",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "u603781915_lazer_name",
+    "password": "Administrator.0",
+    "database": "u603781915_lazer_dbname",
+    "host": "45.84.205.0",
+    "dialect": "mysql"
+  }
+}
+
+
+sequelize model:create --name TempRegister --attributes role_id:number, email:string,password:string,firstname:string,lastname:string,imgpath:string, attachment:string,isverified:boolean
+

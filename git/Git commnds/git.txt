@@ -1,0 +1,20 @@
+-  git init
+- git add . (adds all files in current dir)
+- git rm --cached api (remove the file you added for commit)
+- git commit -m "client" (adds commit descriptions)
+-  git remote -v (show the current connection to the remote repository)
+- git remote add origin https://github.com/rasheedfisal/MostaqlClient.git (connect to the repository you want to source control *must be authenticated first*)
+- git remote remove https://github.com/rasheedfisal/MostaqlAPI.git (disconnect from current repository connection)
+-  git push -u origin main (push the commit to source control *github* in the branch {main})
+- git pull origin main --allow-unrelated-histories (pull the github repo from the bransh {main} with {--allow-unrelated-histories} option to be used in a rare event that merges histories of two projects that started their lives independently).
+
+-------------------------------
+-push source to 2 different origins :
+1- Create a new repo at github.
+2- Clone the repo from fedorahosted to your local machine.
+3- git remote rename origin upstream
+4- git remote add origin URL_TO_GITHUB_REPO
+5- git push origin master
+
+Now you can work with it just like any other github repo. To pull in patches from upstream, simply run {git pull upstream master && git push origin master}.
+

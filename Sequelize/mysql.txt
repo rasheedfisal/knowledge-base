@@ -1,0 +1,22 @@
+UserCredentials
+
+show constraints of table:
+SELECT 
+  TABLE_NAME,COLUMN_NAME,CONSTRAINT_NAME, REFERENCED_TABLE_NAME,REFERENCED_COLUMN_NAME
+FROM
+  INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE
+  
+  REFERENCED_TABLE_NAME = '<table>' AND
+REFERENCED_TABLE_SCHEMA = '<database>' ;
+----------------------------------------------
+
+ADD new CONSTRAINT to table:
+ALTER TABLE `table1` 
+ADD CONSTRAINT `fk_name` 
+    FOREIGN KEY (`fk_table2_id`) REFERENCES `table2` (`t2`) ON DELETE CASCADE;
+---------------------------------------------------
+
+drop CONSTRAINT from table:
+ALTER TABLE tablename 
+DROP FOREIGN KEY `projects_ibfk_2`;

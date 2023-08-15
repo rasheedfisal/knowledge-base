@@ -1,0 +1,8 @@
+SHOW GRANTS;
+------------------------- 
+
+
+GRANT USAGE ON *.* TO `admin`@`%`                    |
+| GRANT ALL PRIVILEGES ON `mostaql`.* TO `admin`@`%`   |
+| GRANT ALL PRIVILEGES ON `mostaqldb`.* TO `admin`@`%` |
+| GRANT ALL PRIVILEGES ON `motorxdb`.* TO `admin`@`%`

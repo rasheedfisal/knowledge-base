@@ -2,6 +2,10 @@
 
 `dotnet --version`
 
+### Check Dotnet Project Templates
+
+`dotnet new --list`
+
 ### Create new WebAPI Template
 
 `dotnet new webapi -n [project name]`

@@ -1,9 +1,10 @@
 # Build the current dockerfile
 
-`docker build -t {username}/{container name}`
+`docker build -t {username}/{container name} {directory path}`
 
 - -t: tag
 - username: docker hub account
+- directory path: `.` for current directory
 
 # Run docker container
 
@@ -25,6 +26,12 @@
 `docker start {container id}`
 
 # Push docker container to docker hub
+
+###### \*to push to docker from vs code you first had to login to docker using:
+
+`docker login`
+
+###### \*you will be prompt to enter username then password
 
 `docker push {username}/{container name}`
 
@@ -68,6 +75,21 @@
 
 `kubectl get pods --namespace={namespace name}`
 
+## short hand for namespace example
+
+`kubectl get services -n ingress-nginx`
+
+- -n: namespace
+
 ## what is Kubernetes Ingress?
 
 ##### is an API object that helps developers expose their applications and manage external access by providing http/s routing rules to the services within a Kubernetes cluster
+
+## Nginx Ingress Controller
+
+1- go to [kubernetes nginx](https://kubernetes.github.io/ingress-nginx/deploy/).
+2- copy ingress controller link `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml` note that version may be different
+
+## Debug Nginx Ingress Logs
+
+`kubectl -n ingress-nginx logs -l app.kubernetes.io/instance=ingress-nginx`

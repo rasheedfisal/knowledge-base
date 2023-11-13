@@ -5,6 +5,12 @@
 ### Check Dotnet Project Templates
 
 `dotnet new --list`
+`dotnet --list-sdks`
+`dotnet --version`
+
+## create the appropriate global.json file
+
+`dotnet new globaljson --sdk-version 2.2.105`
 
 ### Create new WebAPI Template
 
@@ -13,6 +19,9 @@
 ### Adding Packages in .Net
 
 `dotnet add package [package name]`
+or
+`dotnet add package [package name] ----prerelease`
+--prerelease flag to make sure we pull in the latest packages
 
 ### some of the most used packages
 
@@ -23,3 +32,8 @@
 | Microsoft.EntityFrameworkCore.Design                |
 | Microsoft.EntityFrameworkCore.InMemory              |
 | Microsoft.EntityFrameworkCore.SqlServer             |
+
+
+### add ef core tool
+`dotnet tool update --global dotnet-ef --prerelease`
+with --prerelease flag to make sure we pull in the latest packages

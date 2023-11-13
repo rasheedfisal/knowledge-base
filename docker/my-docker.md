@@ -55,6 +55,10 @@
 
 `kubectl get pods`
 
+## delete the Pods
+
+`kubectl delete pod [pod_name]`
+
 ## Delete Deployment File
 
 `kubectl delete deployment {deployment name}`
@@ -93,3 +97,15 @@
 ## Debug Nginx Ingress Logs
 
 `kubectl -n ingress-nginx logs -l app.kubernetes.io/instance=ingress-nginx`
+
+## Kubernetes StorageClass
+`kubectl get storageclass`
+## Get Persistent Volume Claim
+`kubectl get pvc`
+## Create Secrets in Kubernetes
+`kubectl create secret generic [secret name] --from-literal=[secret key]="[secret value]"`
+ex: `kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!"`
+
+## TroubleShooting
+`kubectl describe pod`
+`kubectl describe pod [podname] > [file name].txt`

@@ -1,0 +1,134 @@
+- update system
+*dnf update -y
+-------------------------------
+- list node js module
+*dnf module list nodejs
+------------------------------
+- install latest node js version
+*dnf module install nodejs:18
+------------------------------
+- update npm latest that comes with node(optional)
+*npm install -g npm@9.3.0
+-------------------------------
+- install pm2 processor globally
+*npm i -g pm2
+--------------------------------
+- intall git
+*dnf install -y git
+--------------------------------
+- clone repo from githup and add filename
+*git clone --branch=main https://github.com/rasheedfisal/MostaqlSocket.git [filename]
+ex. git clone --branch=main https://github.com/rasheedfisal/MostaqlSocket.git example1
+
+--current directory
+ex. git clone --branch=main https://github.com/rasheedfisal/MostaqlSocket.git .
+--------------------------------
+- cd into app directory and install production
+*npm install --production
+-------------------------------------
+- create configuration for nginx
+*nano /etc/nginx/conf.d/[configname].conf
+ex. nano /etc/nginx/conf.d/mostaqlsocket.conf
+
+cd /etc/nginx/conf.d/
+
+--------------------------------------
+- restart nginx
+*systemctl restart nginx
+--------------------------------------
+- start a pm2 node processor
+*pm2 start npm --name "process name" -- start
+or
+*pm2 start [app.js] --name [process name]
+ex. pm2 start npm --name "mostaqlapi" -- start
+ex. pm2 start app.js --name app
+ex. pm2 dev app.js --name api
+ex. pm2 start "npm run dev" --name myAppName
+-------------------------------------
+- list pm2 running processors
+*pm2 list
+-------------------------------------
+- open port for app
+*firewall-cmd --permanent --add-port=[port number]/tcp
+ex. firewall-cmd --permanent --add-port=89/tcp
+---------------------------------------
+- allow semanage for port
+*semanage port -a -t http_port_t -p tcp 89
+*semanage port -m -t http_port_t -p tcp 8900
+---------------------------------------
+- reload firewall to fetch latest congiguration
+*firewall-cmd --reload
+------------------------------------
+- set SELinux
+*setsebool httpd_can_network_relay on
+*setsebool -P httpd_can_network_relay on
+*setsebool -P httpd_can_network_connect on
+------------------------------------
+- enable nginx
+*systemctl enable nginx
+
+
+pm2 monit | (monitor app logs)
+pm2 show 0 | (show specific process by process number)
+pm2 restart | (restart all process)
+pm2 kill | (kills all running processors)
+pm2 flush | (clean pipe memory)
+pm2 logs | (check logs)
+pm2 --help | (see help)
+nginx -t | (check nginx configuration)
+dnf module disable nodejs | (disable specific module)
+pm2 stop processA
+pm2 delete processA
+------------------------------------
+run pm2 from json file
+-  Create a new file with the name app.config.json below the build folder and add the following snippet.
+{
+  apps : [
+    {
+      name      : "react-app",
+      script    : "npx",
+      interpreter: "none",
+      args: "serve -s build -p 3000"
+    }
+  ]
+}
+*pm2 start app.config.json
+
+-check which process is using a specific port
+*netstat -nlp | grep :[port number]
+ex:netstat -nlp | grep :80
+
+- best way to clone git into an existing folder
+This can be done by cloning to a new directory, then moving the .git directory into your existing directory.
+
+If your existing directory is named "code".
+{
+git clone https://myrepo.com/git.git temp
+mv temp/.git code/.git
+rm -rf temp
+}
+
+{
+mv srcdir/* targetdir/
+}
+
+*If there are too many files in srcdir you might want to try something like the following approach:
+{
+cd srcdir
+find -exec mv {} targetdir/ +
+}
+
+*It's also possible by using rsync, for example:
+{
+rsync -a src/ dst/
+}
+(
+where:
+
+-a, --archive: archive mode; equals -rlptgoD (no -H,-A,-X)
+Optionally you can add the following:
+
+-v, --verbose: increase verbosity
+--delete-after: delete files on the receiving side after the transfer has completed. This makes it a mv instead of a cp, but be aware that this will remove files that are present in the dst/ directory. Check this question for details on the different delete-options.
+Prefix with sudo to override potential permission issues. Be aware of what you're doing when using rsync within the root filesystem.
+)

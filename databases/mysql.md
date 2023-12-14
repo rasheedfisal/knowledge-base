@@ -111,7 +111,7 @@
 
 ## Backup A DATABASE
 
-`mysqldump -u [username] –p[password] [database_name] > [dump_file.sql] --no-tablespaces -y;`
+`mysqldump -u [username] –p [database_name] > [dump_file].sql --no-tablespaces -y;`
 
 ## use CHANGE, but that means you have to give the column name twice (because CHANGE allows you to change the name of the column too).
 
@@ -754,3 +754,8 @@ The following is an example of a many-to-many relationship:
 So in order to create a many-to-many relationship between the Customers table and the Products table, we created a new table called Orders.
 
 In the Orders table, we have a field called CustomerId and another called ProductId. The values that these fields contain should correspond with a value in the corresponding field in the referenced table. So any given value in Orders.CustomerId should also exist in the Customer.CustomerId field.
+
+
+## Dropping Foreign Key Constraints
+
+`ALTER TABLE tbl_name DROP FOREIGN KEY fk_symbol;`

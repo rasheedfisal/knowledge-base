@@ -39,11 +39,14 @@ cd /etc/nginx/conf.d/
 - start a pm2 node processor
 *pm2 start npm --name "process name" -- start
 or
-*pm2 start [app.js] --name [process name]
+*pm2 start [filename or entry point] --name [process name]
+or
+*pm2 start [filename or entry point] --name [process name] --env [enviroment]
 ex. pm2 start npm --name "mostaqlapi" -- start
 ex. pm2 start app.js --name app
 ex. pm2 dev app.js --name api
 ex. pm2 start "npm run dev" --name myAppName
+ex. ex. pm2 start app.js --name app --env production
 -------------------------------------
 - list pm2 running processors
 *pm2 list
@@ -68,9 +71,13 @@ ex. firewall-cmd --permanent --add-port=89/tcp
 *systemctl enable nginx
 
 
+Use [--update-env] to update environment variables
+Use [--env production] to specify enviroment (production/development)
 pm2 monit | (monitor app logs)
+pm2 save | (save current process list)
 pm2 show 0 | (show specific process by process number)
 pm2 restart | (restart all process)
+pm2 startup | (restart app automatically after server is restarted *only works in linux)
 pm2 kill | (kills all running processors)
 pm2 flush | (clean pipe memory)
 pm2 logs | (check logs)
@@ -132,3 +139,13 @@ Optionally you can add the following:
 --delete-after: delete files on the receiving side after the transfer has completed. This makes it a mv instead of a cp, but be aware that this will remove files that are present in the dst/ directory. Check this question for details on the different delete-options.
 Prefix with sudo to override potential permission issues. Be aware of what you're doing when using rsync within the root filesystem.
 )
+
+*how to use certbot command
+1- create ssl certificate
+/snap/bin/certbot --nginx
+2- list all certificate
+/snap/bin/certbot certificates
+3- delete certificate 
+/snap/bin/certbot delete
+*lookup dns in windows command
+nslookup -query=NS [DNS Name]

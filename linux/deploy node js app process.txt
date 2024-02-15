@@ -149,3 +149,6 @@ Prefix with sudo to override potential permission issues. Be aware of what you'r
 /snap/bin/certbot delete
 *lookup dns in windows command
 nslookup -query=NS [DNS Name]
+
+*update all packages
+npx npm-check-updates -u

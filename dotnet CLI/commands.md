@@ -60,3 +60,8 @@ with --prerelease flag to make sure we pull in the latest packages
 
 ### List All migrations.
 `dotnet ef migrations list`
+
+
+`
+dotnet ef database update --verbose --project CommandService.Data   --startup-project CommandService
+`

@@ -87,3 +87,20 @@ see the links below.
 
 For more information, check out the official Github repository [here](https://github.com/AGWA/git-crypt).
 A tutorial on git-crypt can be found [here](https://thedatabaseme.de/2022/04/13/lets-keep-this-our-secret-transparent-git-encryption-using-git-crypt/).
+
+### or create a new repository on the command line
+`
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/rasheedfisal/report-service.git
+git push -u origin main
+`
+
+### push an existing repository from the command line
+`
+git remote add origin https://github.com/rasheedfisal/report-service.git
+git branch -M main
+git push -u origin main
+`
